@@ -23,7 +23,7 @@ wishlist/ ├── Dockerfile ├── docker-compose.yml ├── pom.xml �
 1. **Clone o repositório**:
 
     ```sh
-    git clone https://github.com/yourusername/wishlist.git
+    git clone https://github.com/andrey02/wishlist.git
     cd wishlist
     ```
 
@@ -140,18 +140,6 @@ wishlist/ ├── Dockerfile ├── docker-compose.yml ├── pom.xml �
     true
     ```
 
-## Contribuições
 
-1. Faça um fork do projeto
-2. Crie um branch para sua feature (`git checkout -b feature/sua-feature`)
-3. Commit suas mudanças (`git commit -am 'Adicione sua feature'`)
-4. Faça um push para o branch (`git push origin feature/sua-feature`)
-5. Crie uma pull request
 
-## Licença
-
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-Feito com ❤️ por [Seu Nome](https://github.com/yourusername)
+Feito por [andrey02](https://github.com/andrey02)
