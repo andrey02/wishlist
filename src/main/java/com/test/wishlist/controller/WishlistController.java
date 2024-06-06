@@ -28,8 +28,12 @@ public class WishlistController {
 
     @DeleteMapping("/remove")
     public ResponseEntity<Wishlist> removeProductFromWishlist(@RequestBody WishlistDTO wishlistDTO) {
-        Wishlist wishlist = wishlistService.removeProductFromWishlist(wishlistDTO);
-        return wishlist != null ? ResponseEntity.ok(wishlist) : ResponseEntity.notFound().build();
+        try {
+            Wishlist wishlist = wishlistService.removeProductFromWishlist(wishlistDTO);
+            return wishlist != null ? ResponseEntity.ok(wishlist) : ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 
     @GetMapping("/{clientId}")

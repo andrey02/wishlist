@@ -15,8 +15,20 @@ Este é um projeto de API de Wishlist usando Spring Boot, MongoDB e Docker. A AP
 - Cucumber para testes de comportamento
 
 ## Estrutura do Projeto
-wishlist/ ├── Dockerfile ├── docker-compose.yml ├── pom.xml ├── scripts/ │ └── test.sh └── src/ ├── main/ │ ├── java/com/test/wishlist/ │ └── resources/ └── test/ ├── java/com/test/wishlist/ └── resources/ └── features/
-
+```sh
+wishlist/ 
+├── Dockerfile 
+├── docker-compose.yml 
+├── pom.xml 
+└── src/ 
+    ├── main/ 
+    │   ├── java/com/test/wishlist/ 
+    │   └── resources/ 
+    └── test/ 
+        ├── java/com/test/wishlist/ 
+        └── resources/ 
+            └── features/ 
+```
 
 ## Instalação e Configuração
 
@@ -52,22 +64,12 @@ wishlist/ ├── Dockerfile ├── docker-compose.yml ├── pom.xml �
     docker-compose down
     ```
 
-## Executando Testes
-
-1. **Rodar Testes Automatizados**:
-
+3. **Se preferir rodar apontando para uma instancia do MongoDB local**:
+    
     ```sh
-    docker-compose run tests
-    ```
-
-2. **Script de Teste (Opcional)**:
-
-    Há um script `test.sh` que automatiza a construção, execução e teste do ambiente:
-
-    ```sh
-    ./scripts/test.sh
-    ```
-
+        spring.data.mongodb.uri=mongodb://root:example@127.0.0.1:27017/wishlist-db?authSource=admin
+     ```
+    alterar a propriedade spring.data.mongodb.uri= do arquivo 'application.properties' como no exemplo acima.
 ## Endpoints da API
 
 ### Adicionar Produto à Wishlist
@@ -140,6 +142,6 @@ wishlist/ ├── Dockerfile ├── docker-compose.yml ├── pom.xml �
     true
     ```
 
-
+Collection [Wishlist.postman_collection.json]() disponibilizado na raiz do projeto.
 
 Feito por [andrey02](https://github.com/andrey02)
