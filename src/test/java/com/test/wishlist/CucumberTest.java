@@ -11,6 +11,5 @@ import org.springframework.test.context.ActiveProfiles;
         glue = "com.test.wishlist",
         plugin = { "pretty", "summary" }
 )
-@ActiveProfiles("test")
 public class CucumberTest {
 }

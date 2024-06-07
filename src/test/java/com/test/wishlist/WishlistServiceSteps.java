@@ -36,6 +36,8 @@ public class WishlistServiceSteps {
     private Wishlist wishlist;
     private WishlistDTO wishlistDTO;
     private Exception exception;
+    private boolean productExists;
+    private Optional<Wishlist> retrievedWishlist;
 
     public WishlistServiceSteps() {
         openMocks(this); // Inicializa mocks do Mockito
@@ -119,5 +121,35 @@ public class WishlistServiceSteps {
     public void sistema_lancar_wishlist_limit_exception() {
         assertNotNull(exception);
         assertTrue(exception instanceof WishlistLimitException);
+    }
+
+    @Quando("eu verificar se o produto com id {string} está na wishlist")
+    public void verificar_produto_na_wishlist(String productId) {
+        wishlistDTO.setProductId(productId);
+        productExists = wishlistService.isProductInWishlist(wishlistDTO);
+    }
+
+    @Entao("o resultado deve ser verdadeiro")
+    public void resultado_deve_ser_verdadeiro() {
+        assertTrue(productExists);
+    }
+
+    @Dado("que o cliente com id {string} tem uma wishlist")
+    public void cliente_tem_wishlist(String clientId) {
+        wishlist = new Wishlist();
+        wishlist.setClientId(clientId);
+        wishlist.setProductIds(new ArrayList<>());
+        when(wishlistRepository.findByClientId(clientId)).thenReturn(Optional.of(wishlist));
+    }
+
+    @Quando("eu buscar a wishlist pelo id do cliente {string}")
+    public void buscar_wishlist_por_id_cliente(String clientId) {
+        retrievedWishlist = wishlistService.getWishlistByClientId(clientId);
+    }
+
+    @Entao("a wishlist retornada deve pertencer ao cliente com id {string}")
+    public void wishlist_retornada_deve_pertencer_ao_cliente(String clientId) {
+        assertTrue(retrievedWishlist.isPresent());
+        assertEquals(clientId, retrievedWishlist.get().getClientId());
     }
 }
